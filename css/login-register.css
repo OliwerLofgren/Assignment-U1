@@ -6,15 +6,14 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-#Username-wrapper > input {
+input {
   height: 5vh;
   width: 20vw;
+  margin: 5px;
 }
-#Password-wrapper > input {
-  height: 5vh;
-  width: 20vw;
-}
+
 main > button {
   height: 5vh;
   width: 20vw;
