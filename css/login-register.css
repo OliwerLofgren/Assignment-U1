@@ -1,0 +1,29 @@
+body {
+  background-color: turquoise;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Username-wrapper > input {
+  height: 5vh;
+  width: 20vw;
+}
+#Password-wrapper > input {
+  height: 5vh;
+  width: 20vw;
+}
+main > button {
+  height: 5vh;
+  width: 20vw;
+  margin: 10px;
+  font-size: 20px;
+}
+main > p {
+  margin: 10px;
+}
+main > a {
+  margin: 10px;
+}

@@ -1,0 +1,24 @@
+@font-face {
+  font-family: roboto;
+  src: url(/fonts/RobotoCondensed-Regular.ttf);
+}
+* {
+  font-family: roboto;
+}
+body {
+  margin: 0;
+}
+header {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+header > img {
+  height: 50px;
+  width: 50px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
