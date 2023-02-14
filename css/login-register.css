@@ -1,28 +1,83 @@
 body {
   background-color: turquoise;
 }
+
+h2 {
+  margin-right: 20px;
+}
+
 main {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  height: 80%;
 }
+
+.inputs {
+  width: 100%;
+}
+
+label {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
 input {
-  height: 5vh;
-  width: 20vw;
+  width: 90vw;
+  height: 12vw;
   margin: 5px;
 }
 
-main > button {
-  height: 5vh;
-  width: 20vw;
-  margin: 10px;
-  font-size: 20px;
+button {
+  font-size: 6vw;
+  height: 12vw;
+  width: 80vw;
 }
-main > p {
-  margin: 10px;
-}
+
 main > a {
   margin: 10px;
+}
+.feedback {
+  height: 40vw;
+  width: 80vw;
+  background-color: white;
+  position: absolute;
+  top: 70vw;
+  left: 10vw;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  visibility: hidden;
+}
+
+.feedback.visible {
+  visibility: visible;
+  opacity: 90%;
+  z-index: 1;
+}
+#filter {
+  visibility: hidden;
+}
+#filter.visible {
+  visibility: visible;
+  background-color: rgba(248, 248, 255, 0.6);
+  height: 100vh;
+  width: 100vw;
+
+  position: absolute;
+  top: 0;
+}
+.feedback > p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.feedback > button {
+  width: 90%;
 }
