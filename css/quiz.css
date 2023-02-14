@@ -14,3 +14,25 @@
   height: auto;
   font-size: 15px;
 }
+img {
+  height: 50vh;
+  width: 50vw;
+}
+#alternatives {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.alt {
+  height: auto;
+  width: 30vw;
+  margin: 5px;
+  font-size: 15px;
+  padding: 10px;
+}
+.image {
+  background-image: url("wolfhound/irish");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
