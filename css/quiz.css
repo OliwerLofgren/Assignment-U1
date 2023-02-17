@@ -17,8 +17,9 @@
 img {
   height: 50vh;
   width: 50vw;
+  z-index: 0;
 }
-#alternatives {
+.alternatives {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -30,9 +31,18 @@ img {
   font-size: 15px;
   padding: 10px;
 }
-.image {
-  background-image: url("wolfhound/irish");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+#image {
+  display: grid;
+  grid-template-columns: 1, 1fr;
+  grid-template-rows: 1, 1fr;
+}
+#image-first {
+  position: relative;
+  z-index: 1;
+  border: 1px red solid;
+}
+#image-second {
+  position: absolute;
+  z-index: 2;
+  border: 1px pink solid;
 }

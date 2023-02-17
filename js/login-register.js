@@ -48,12 +48,25 @@ function new_user() {
   document.querySelector("button").textContent = "Register";
 }
 document.querySelector("main button").addEventListener("click", check_button);
-function check_button() {
-  if (document.querySelector("button").textContent === "Register") {
-    post_register();
+
+async function check_button() {
+  if (input_username.value === "" && input_username.value === "") {
+    document.querySelector(".feedback").classList.add("visible");
+    document.querySelector("#filter").classList.add("visible");
+    document.querySelector(".feedback").innerHTML = `
+      <p>  Write your username and password </p>
+      <button> Ok </button>
+      `;
+
+    document
+      .querySelector(".feedback button")
+      .addEventListener("click", toggle_button);
   } else {
-    console.log("Login Hej");
-    get_login();
+    if (document.querySelector("button").textContent === "Register") {
+      post_register();
+    } else {
+      get_login();
+    }
   }
 }
 document.querySelector("button").addEventListener("click", post_register);
