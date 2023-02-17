@@ -69,4 +69,3 @@ async function check_button() {
     }
   }
 }
-document.querySelector("button").addEventListener("click", post_register);

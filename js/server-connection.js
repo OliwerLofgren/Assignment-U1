@@ -6,19 +6,24 @@ async function send_response(link) {
 }
 
 async function post_register() {
+  console.log("Erica säger hej");
   document.querySelector(".feedback").classList.add("visible");
   document.querySelector("#filter").classList.add("visible");
-  document.querySelector(".feedback").innerHTML = `Connecting to server...`;
+  document.querySelector(
+    ".feedback"
+  ).innerHTML = `<p>Connecting to server...</p>`;
 
-  const response = await send_response(prefix, {
-    method: "POST",
-    headers: { "Content-type": "application/json; charset=UTF-8" },
-    body: JSON.stringify({
-      action: "register",
-      user_name: input_username.value,
-      password: input_password.value,
-    }),
-  });
+  const response = await send_response(
+    new Request("https://teaching.maumt.se/apis/access/", {
+      method: "POST",
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+      body: JSON.stringify({
+        action: "register",
+        user_name: input_username.value,
+        password: input_password.value,
+      }),
+    })
+  );
 
   console.log(response);
 
@@ -52,6 +57,7 @@ async function post_register() {
     .querySelector(".feedback button")
     .addEventListener("click", toggle_button);
 }
+
 function toggle_button() {
   document.querySelector(".feedback").classList.remove("visible");
   document.querySelector("#filter").classList.remove("visible");
@@ -72,9 +78,9 @@ async function get_login() {
 
   if (response.ok) {
     // document.querySelector("main").innerHTML = `<img src="media/logo.png" />`;
-    document.querySelector(".feedback").classList.remove("visible");
-    document.querySelector("#filter").classList.remove("visible");
-    document.querySelector("main").innerHTML = ``;
+    // document.querySelector(".feedback").classList.remove("visible");
+    // document.querySelector("#filter").classList.remove("visible");
+    // document.querySelector("main").innerHTML = ``;
     get_quiz();
     toggle_button();
   } else {
@@ -89,9 +95,9 @@ async function get_login() {
 
   console.log(response);
 
-  document
-    .querySelector(".feedback button")
-    .addEventListener("click", toggle_button);
+  // document
+  //   .querySelector(".feedback button")
+  //   .addEventListener("click", toggle_button);
 }
 function toggle_button() {
   document.querySelector(".feedback").classList.remove("visible");

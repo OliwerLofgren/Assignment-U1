@@ -14,11 +14,7 @@
   height: auto;
   font-size: 15px;
 }
-img {
-  height: 50vh;
-  width: 50vw;
-  z-index: 0;
-}
+
 .alternatives {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -26,23 +22,18 @@ img {
 }
 .alt {
   height: auto;
-  width: 30vw;
-  margin: 5px;
+  width: 45vw;
   font-size: 15px;
+  margin: 5px;
   padding: 10px;
+  justify-self: center;
+  align-self: center;
 }
-#image {
-  display: grid;
-  grid-template-columns: 1, 1fr;
-  grid-template-rows: 1, 1fr;
-}
-#image-first {
-  position: relative;
-  z-index: 1;
-  border: 1px red solid;
-}
-#image-second {
-  position: absolute;
-  z-index: 2;
-  border: 1px pink solid;
+.image {
+  max-height: 50vh;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+
+  margin: 10px;
 }
