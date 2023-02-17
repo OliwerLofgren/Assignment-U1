@@ -32,7 +32,7 @@ function switch_login_register() {
 }
 
 function login() {
-  document.querySelector("body").style.backgroundColor = "turquoise";
+  document.querySelector("#wrapper").style.backgroundColor = "turquoise";
   document.querySelector("main > h2").textContent = "LOGIN";
   document.querySelector("p").textContent = "Let the magic start!";
   document.querySelector("a").textContent = "New to this? Register for free";
@@ -40,7 +40,7 @@ function login() {
 }
 
 function new_user() {
-  document.querySelector("body").style.backgroundColor = "green";
+  document.querySelector("#wrapper").style.backgroundColor = "green";
   document.querySelector("main > h2").textContent = "REGISTER";
   document.querySelector("p").textContent = "Ready when you are!";
   document.querySelector("a").textContent =

@@ -19,6 +19,11 @@ async function get_quiz() {
   logout_button.classList.add("logout");
   logout_button.textContent = "Logout";
   document.querySelector("#login-info").append(logout_button);
+  logout_button.addEventListener("click", logout);
+  function logout() {
+    localStorage.removeItem("user");
+    location.reload();
+  }
 
   get_dog_info();
 

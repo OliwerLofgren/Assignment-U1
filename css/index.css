@@ -6,7 +6,13 @@
   font-family: roboto;
 }
 body {
+  background-color: black;
   margin: 0;
+  height: 100vh;
+}
+#wrapper {
+  border: 2px solid;
+  border-radius: 25px;
 }
 header {
   display: flex;

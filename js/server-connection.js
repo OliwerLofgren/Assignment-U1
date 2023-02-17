@@ -81,6 +81,7 @@ async function get_login() {
     // document.querySelector(".feedback").classList.remove("visible");
     // document.querySelector("#filter").classList.remove("visible");
     // document.querySelector("main").innerHTML = ``;
+    login_data(input_username.value, input_password.value);
     get_quiz();
     toggle_button();
   } else {
