@@ -5,8 +5,8 @@ async function send_response(link) {
   return rqst;
 }
 
-async function post_register() {
-  console.log("Erica säger hej");
+async function post_register(input_username, input_password) {
+  console.log("Register incoming");
   document.querySelector(".feedback").classList.add("visible");
   document.querySelector("#filter").classList.add("visible");
   document.querySelector(
@@ -64,6 +64,9 @@ function toggle_button() {
 }
 
 async function get_login() {
+  const input_username = document.querySelector("input[type='Username']");
+  const input_password = document.querySelector("input[type='Password']");
+
   document.querySelector(".feedback").classList.add("visible");
   document.querySelector("#filter").classList.add("visible");
   document.querySelector(".feedback").innerHTML = `Connecting to server...`;
@@ -74,20 +77,11 @@ async function get_login() {
     `${prefix}?action=check_credentials&user_name=${input_username.value}&password=${input_password.value}`
   );
 
-  // const resource = await response.json();
-
   if (response.ok) {
-    // document.querySelector("main").innerHTML = `<img src="media/logo.png" />`;
-    // document.querySelector(".feedback").classList.remove("visible");
-    // document.querySelector("#filter").classList.remove("visible");
-    // document.querySelector("main").innerHTML = ``;
-    login_data(input_username.value, input_password.value);
-    get_quiz();
+    localStorage.setItem("user", input_username.value);
+    create_quiz(input_username.value);
     toggle_button();
   } else {
-    document.querySelector(".feedback").classList.remove("visible");
-    document.querySelector("#filter").classList.remove("visible");
-
     document.querySelector("main p").style.backgroundColor = "ghostwhite";
     document.querySelector("main p").innerHTML = `
       Wrong password, please try again.
@@ -95,12 +89,4 @@ async function get_login() {
   }
 
   console.log(response);
-
-  // document
-  //   .querySelector(".feedback button")
-  //   .addEventListener("click", toggle_button);
-}
-function toggle_button() {
-  document.querySelector(".feedback").classList.remove("visible");
-  document.querySelector("#filter").classList.remove("visible");
 }
