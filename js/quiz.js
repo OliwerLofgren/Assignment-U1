@@ -1,11 +1,8 @@
-function random_number(max) {
-  return Math.floor(max * Math.random());
-}
+"use strict";
 function create_quiz(username) {
   get_quiz();
 
   function get_quiz() {
-    console.log("Quiz started");
     document.querySelector("main").innerHTML = `
       <div id="login-info">
       <p>${username}</p>
@@ -14,7 +11,7 @@ function create_quiz(username) {
       </div>
       `;
 
-    document.querySelector("main").style.backgroundImage =
+    document.querySelector("#wrapper").style.backgroundImage =
       "url('/media/logo.png')";
 
     const logout_button = document.createElement("button");
@@ -22,24 +19,39 @@ function create_quiz(username) {
     logout_button.textContent = "Logout";
     document.querySelector("#login-info").append(logout_button);
     logout_button.addEventListener("click", logout);
+
     function logout() {
       localStorage.removeItem("user");
       location.reload();
     }
 
-    get_dog_info();
+    get_alternatives();
 
-    async function get_dog_info() {
+    async function get_alternatives() {
       const dog_array = [];
       for (let i = 0; i <= 4; i++) {
         if (!dog_array.includes(ALL_BREEDS[random_number(ALL_BREEDS.length)])) {
           dog_array.push(ALL_BREEDS[random_number(ALL_BREEDS.length)]);
         }
       }
+
+      document.querySelector(".feedback").classList.add("visible");
+      document.querySelector("#filter").classList.add("visible");
+
+      document.querySelector(".feedback").textContent =
+        "Getting a random image....";
+      document.querySelector(".feedback").style.backgroundColor = "white";
+
       const random_dog = dog_array[random_number(dog_array.length)];
       const dog_url = `https://dog.ceo/api/breed/${random_dog.url}/images/random`;
-      const random_dog_picture = await (await send_response(dog_url)).json();
-      document.querySelector("main").style.removeProperty("background-image");
+      const random_dog_picture = await (await fetch_resource(dog_url)).json();
+
+      document
+        .querySelector("#wrapper")
+        .style.removeProperty("background-image");
+
+      document.querySelector(".feedback").classList.remove("visible");
+      document.querySelector("#filter").classList.remove("visible");
 
       const dog_dom = document.createElement("img");
       dog_dom.classList.add("image");
@@ -59,27 +71,27 @@ function create_quiz(username) {
         button_dom.textContent = dog_array[i].name;
         button_dom.addEventListener("click", () => {
           if (button_dom.textContent.includes(random_dog.name)) {
-            console.log("+");
             document.querySelector(".feedback").classList.add("visible");
             document.querySelector("#filter").classList.add("visible");
-            document.querySelector(".feedback").style.backgroundColor = "green";
+            document.querySelector(".feedback").style.backgroundColor =
+              "rgb(75, 139, 75)";
             document.querySelector(".feedback").innerHTML = `
             <p>Correct answer!</p>
-            <button>OK</button>
+            <button>ONE MORE</button>
             `;
           } else {
-            console.log("-");
             document.querySelector(".feedback").classList.add("visible");
             document.querySelector("#filter").classList.add("visible");
-            document.querySelector(".feedback").style.backgroundColor = "red";
+            document.querySelector(".feedback").style.backgroundColor =
+              "tomato";
             document.querySelector(".feedback").innerHTML = `
             <p>Wrong answer! <br>Please try again!</p>
-            <button>OK</button>
+            <button>ONE MORE</button>
             `;
           }
           document
             .querySelector(".feedback button")
-            .addEventListener("click", toggle_button);
+            .addEventListener("click", remove_classes);
           document
             .querySelector(".feedback button")
             .addEventListener("click", get_quiz);
